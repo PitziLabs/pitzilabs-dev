@@ -1,0 +1,29 @@
+---
+// PLACEHOLDER — replaced by the faithful design port.
+//
+// The real landing page is the Claude Design handoff in design/ (read
+// design/README.md first, then design/project/components/*.jsx and
+// design/project/design-system/). Port those sections to React components
+// under src/components/ and compose them here, in this order:
+//   Nav · HeroDark · StatusStrip · ServicesGrid · CaseStudy ·
+//   Principles · Experience · Contact · Footer
+// Render server-side only (no client: directive) — this is a static site.
+// Drop the dev-only Tweaks panel; bake its defaults (HeroDark, accent
+// #e08438, status strip on). See CLAUDE.md for the full porting brief.
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main
+    style="min-height:100vh;display:grid;place-items:center;text-align:center;padding:48px;font-family:var(--font-mono);color:var(--color-ink);"
+  >
+    <div>
+      <div style="font-size:48px;font-weight:700;letter-spacing:-0.05em;color:var(--color-accent);">
+        &lt;pl:&gt;
+      </div>
+      <p style="margin-top:16px;color:var(--color-ink-muted);">
+        Pitzi Labs — landing page port in progress.
+      </p>
+    </div>
+  </main>
+</Layout>

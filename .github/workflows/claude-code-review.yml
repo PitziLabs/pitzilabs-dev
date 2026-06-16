@@ -1,0 +1,55 @@
+# ============================================================================
+# Claude Code — Automated PR Review
+# ============================================================================
+# Thin wrapper around PitziLabs/shared-workflows/claude-review.yml. Pinned to
+# Haiku via the shared workflow's default.
+# ============================================================================
+
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+    paths-ignore:
+      - "LICENSE"
+      - ".gitignore"
+
+jobs:
+  claude-review:
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    uses: PitziLabs/shared-workflows/.github/workflows/claude-review.yml@main
+    secrets: inherit
+    with:
+      review_prompt: |
+        This repository is the **Pitzi Labs landing site** — an Astro static
+        site (server-rendered React, no client hydration) served by nginx on
+        the foundry-platform-demo AWS stack via GitHub OIDC → ECR/ECS/ALB. It
+        reproduces a Claude Design handoff (the source bundle lives in
+        `design/`). Review changes along these dimensions:
+
+        - **Design fidelity** — the rendered output must match the design in
+          `design/project/` (the `Pitzi Labs Landing` components + the
+          `design-system/colors_and_type.css` tokens). Flag drift in colors,
+          spacing, type, copy, or section order. Brand = the `<pl:>` mark,
+          navy #1c3552 + orange #e08438 + cream #faf7f2, Space Grotesk +
+          JetBrains Mono. Copy is load-bearing (e.g. the hero headline,
+          "Queue's open.", the principles) — don't let it get paraphrased.
+        - **Static-site correctness** — components render at build with no
+          `client:*` directive; no React should ship to the browser. The
+          dev-only Tweaks panel must NOT be present. Interactions in the
+          prototype (hover handlers) should be CSS, not shipped JS.
+        - **Build & container** — `npm run build` must produce `dist/`; the
+          Dockerfile copies `dist/` into nginx serving on :8080 with a
+          `/health` endpoint (the ALB target group health check).
+        - **Deploy wiring** — `.github/workflows/deploy.yml` must target ECR
+          `foundry-dev-pitzilabs` / ECS service `foundry-dev-pitzilabs` on
+          cluster `foundry-dev-cluster`, via the foundry OIDC role. No
+          long-lived AWS credentials anywhere.
+        - **Accessibility & semantics** — real landmarks (header/nav/main/
+          footer), alt text, sufficient contrast, focus-visible styles intact.
+        - **Hygiene** — no secrets, no stray prototype scaffolding leaking into
+          the served site, `public/design-system/` paths resolve.

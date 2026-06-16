@@ -1,0 +1,52 @@
+---
+// Base HTML shell for the Pitzi Labs site.
+// Links the canonical design tokens (public/design-system/colors_and_type.css,
+// which @imports the self-hosted fonts) and the small set of global styles
+// the design relies on. Page content (the ported sections) comes through the
+// default slot.
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Pitzi Labs — Production that shows up when the business does.',
+  description = 'Pitzi Labs — infrastructure operations consulting. Twenty-five years of production: platform engineering, cost & posture audits, incident & on-call, CI/CD & supply chain. Build it, break it, operate it.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/design-system/colors_and_type.css" />
+    <style is:global>
+      html,
+      body {
+        margin: 0;
+        background: var(--color-bg);
+      }
+      body {
+        overflow-x: hidden;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+      ::selection {
+        background: var(--color-accent);
+        color: #faf7f2;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

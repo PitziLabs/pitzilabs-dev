@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pitzi Labs — Production that shows up.</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="design-system/colors_and_type.css" />
+<style>
+  html, body { margin: 0; background: var(--color-bg); }
+  body { overflow-x: hidden; }
+  /* Density tweak */
+  body[data-density="compact"] section { padding-top: 64px !important; padding-bottom: 64px !important; }
+  /* Focus ring */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  ::selection { background: var(--color-accent); color: #faf7f2; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="components/Brand.jsx"></script>
+<script type="text/babel" src="components/Shared.jsx"></script>
+<script type="text/babel" src="components/Nav.jsx"></script>
+<script type="text/babel" src="components/Hero.jsx"></script>
+<script type="text/babel" src="components/StatusStrip.jsx"></script>
+<script type="text/babel" src="components/Services.jsx"></script>
+<script type="text/babel" src="components/CaseStudy.jsx"></script>
+<script type="text/babel" src="components/Principles.jsx"></script>
+<script type="text/babel" src="components/Experience.jsx"></script>
+<script type="text/babel" src="components/Contact.jsx"></script>
+<script type="text/babel" src="components/Tweaks.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function App() {
+  const [tweaks, setTweaks] = useState(window.TWEAKS_DEFAULTS);
+  const [tweaksVisible, setTweaksVisible] = useState(false);
+
+  // Apply accent live by rewriting the CSS variable
+  useEffect(() => {
+    document.documentElement.style.setProperty("--color-accent", tweaks.accent);
+    document.body.setAttribute("data-density", tweaks.density);
+  }, [tweaks.accent, tweaks.density]);
+
+  // Edit-mode wiring
+  useEffect(() => {
+    const handler = (e) => {
+      if (!e.data || typeof e.data !== "object") return;
+      if (e.data.type === "__activate_edit_mode")   setTweaksVisible(true);
+      if (e.data.type === "__deactivate_edit_mode") setTweaksVisible(false);
+    };
+    window.addEventListener("message", handler);
+    window.parent.postMessage({ type: "__edit_mode_available" }, "*");
+    return () => window.removeEventListener("message", handler);
+  }, []);
+
+  return (
+    <div data-screen-label="Pitzi Labs Landing">
+      <NavBar active="Practice" />
+      <Hero variant={tweaks.heroVariant} />
+      {tweaks.showStatusStrip && <StatusStrip />}
+      <ServicesGrid />
+      <CaseStudy />
+      <Principles />
+      <Experience />
+      <Contact />
+      <Footer />
+      <TweaksPanel values={tweaks} setValues={setTweaks} visible={tweaksVisible} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
