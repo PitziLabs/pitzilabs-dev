@@ -1,0 +1,6 @@
+# Transient renders. Canonical artifacts live in PitziLabs/.github → brand/avatars/.
+# contact-sheet.png is intentionally tracked as the decision record.
+*-512.png
+live-hero.png
+surface-*.png
+.wrap-*.html
