@@ -1,0 +1,87 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Pitzi Labs — avatar candidates</title>
+<style>
+  @font-face{
+    font-family:'JetBrains Mono';
+    src:url('../../public/design-system/assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+    font-weight:100 800; font-display:block;
+  }
+  @font-face{
+    font-family:'Space Grotesk';
+    src:url('../../public/design-system/assets/fonts/space-grotesk-latin.woff2') format('woff2');
+    font-weight:100 800; font-display:block;
+  }
+  :root{ --navy:#1c3552; --orange:#e08438; --cream:#faf7f2; }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:#0d1117; color:#e6edf3;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    padding:40px 48px 56px;
+  }
+  h1{font-size:26px; margin:0 0 4px; letter-spacing:-.02em}
+  h1 .smile{color:var(--orange); font-family:'JetBrains Mono',monospace}
+  .sub{color:#8b949e; font-size:14px; margin:0 0 32px}
+  .group-title{font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#8b949e;
+    border-bottom:1px solid #21262d; padding-bottom:8px; margin:34px 0 22px}
+  .row{display:flex; gap:64px; flex-wrap:wrap}
+  .cand{display:flex; flex-direction:column; align-items:center; gap:14px; width:290px}
+  .pair{display:flex; gap:18px; align-items:center}
+  .chip{width:120px; height:120px; flex:0 0 auto}
+  .chip.circle{border-radius:50%; overflow:hidden}
+  .chip svg{display:block; width:100%; height:100%}
+  .name{font-family:'JetBrains Mono',monospace; font-size:13px; color:#e6edf3}
+  .note{font-size:12px; color:#8b949e; text-align:center; line-height:1.5}
+  .tag{font-size:11px; color:#6e7681}
+  .legend{display:flex; gap:8px; font-size:11px; color:#8b949e; margin-top:6px}
+  .legend span{display:inline-flex; gap:5px; align-items:center}
+  .swatch{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid #30363d}
+</style>
+
+<h1>Pitzi Labs — GitHub avatar candidates <span class="smile">:&gt;</span></h1>
+<p class="sub">Mark lowercase per BRAND.md. Square chip + <b>circle crop (how GitHub renders it)</b>. Real JetBrains Mono 700. Backdrop = GitHub dark.</p>
+<div class="legend">
+  <span><i class="swatch" style="background:#1c3552"></i>navy #1c3552</span>
+  <span><i class="swatch" style="background:#e08438"></i>orange #e08438</span>
+  <span><i class="swatch" style="background:#faf7f2"></i>cream #faf7f2</span>
+</div>
+
+<div class="group-title">Org &nbsp;·&nbsp; <code>&lt;pl:&gt;</code> &nbsp;—&nbsp; scheme decision: navy-fill vs cream-inverted</div>
+<div class="row">
+  <div class="cand">
+    <div class="pair">
+      <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1c3552"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="172" font-weight="700" letter-spacing="-7"><tspan fill="#e08438">&lt;</tspan><tspan fill="#faf7f2">pl</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+      <div class="chip circle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1c3552"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="172" font-weight="700" letter-spacing="-7"><tspan fill="#e08438">&lt;</tspan><tspan fill="#faf7f2">pl</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+    </div>
+    <div class="name">pl-navy</div>
+    <div class="note">Matches the favicon &amp; site nav chip.</div>
+  </div>
+  <div class="cand">
+    <div class="pair">
+      <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#faf7f2"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="172" font-weight="700" letter-spacing="-7"><tspan fill="#e08438">&lt;</tspan><tspan fill="#1c3552">pl</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+      <div class="chip circle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#faf7f2"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="172" font-weight="700" letter-spacing="-7"><tspan fill="#e08438">&lt;</tspan><tspan fill="#1c3552">pl</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+    </div>
+    <div class="name">pl-cream</div>
+    <div class="note">Inverted. Closest to the avatar you have now (but lowercased).</div>
+  </div>
+</div>
+
+<div class="group-title">Personal (cpitzi) &nbsp;·&nbsp; brackets decision: <code>&lt;cjp:&gt;</code> vs <code>CJP:&gt;</code></div>
+<div class="row">
+  <div class="cand">
+    <div class="pair">
+      <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1c3552"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="132" font-weight="700" letter-spacing="-6"><tspan fill="#e08438">&lt;</tspan><tspan fill="#faf7f2">cjp</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+      <div class="chip circle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1c3552"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="132" font-weight="700" letter-spacing="-6"><tspan fill="#e08438">&lt;</tspan><tspan fill="#faf7f2">cjp</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+    </div>
+    <div class="name">cjp-brackets-navy</div>
+    <div class="note">Fully honors the command-prompt motif. Lowercase, consistent with the org mark.</div>
+  </div>
+  <div class="cand">
+    <div class="pair">
+      <div class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1c3552"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="150" font-weight="700" letter-spacing="-6"><tspan fill="#faf7f2">CJP</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+      <div class="chip circle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="#1c3552"/><text x="256" y="256" text-anchor="middle" dominant-baseline="central" font-family="'JetBrains Mono',monospace" font-size="150" font-weight="700" letter-spacing="-6"><tspan fill="#faf7f2">CJP</tspan><tspan fill="#e08438">:&gt;</tspan></text></svg></div>
+    </div>
+    <div class="name">cjp-plain-navy</div>
+    <div class="note">Initials stay legible at small sizes. Keeps the <span style="color:#e08438">:&gt;</span> smile only.</div>
+  </div>
+</div>
