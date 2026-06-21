@@ -41,16 +41,25 @@ Brand **facts** have been corrected to match the live site (it's authoritative):
 - ✅ Founding `EST. 1999 → EST. 1997` (incl. `since-1999` badges, banner.svg)
 - ✅ Email `christopher@pitzilabs.com → chris@pitzilabs.dev`
 
+**Resolved — voice decided (2026-06-21):**
+
+- ✅ **Voice — "we" (collective).** The org card speaks as a collective Labs
+  ("**we** build / operate", "What we do"), *not* first-person singular.
+  Rationale: "Pitzi Labs" is a placeholder and a full rebrand (swapping the
+  "Pitzi" wordmark) is coming — the brand is heading to a collective identity.
+  The published `pitzi-labs/.github` → `profile/README.md` was aligned to "we"
+  (its hero line had drifted to first-person singular) and is the **source of
+  truth**. ⚠️ The local variants here are now **stale** — e.g.
+  `readme-banner.md` still carries the pre-rework "Twenty-five years / bridging
+  into" copy and a `# PitziLabs` heading. Re-pull or retire them at the rebrand;
+  don't treat them as current. The live landing site is the remaining
+  first-person outlier — reconcile to "we" at the rebrand.
+
 **Still open — a copy call for Chris (not auto-changed):**
 
-- ⚠️ **Voice.** These drafts use a team voice ("**we** design / operate", "What
-  we do"). The live site is **first-person singular** — a solo practice
-  ("*A career keeping production up…*", "What I'll do for you", "Christopher
-  Pitzi"). Before publishing, rewrite the variants to the live first-person
-  voice (or deliberately decide the org card speaks differently).
 - ⚠️ **Tenure phrasing.** Live pairs `EST. 1997` with "**25+ years** / Twenty-five
   years". The drafts say "Twenty-five years" — consistent with live, but worth a
-  glance once the voice pass happens.
+  glance at the rebrand.
 
 ## Promote
 
